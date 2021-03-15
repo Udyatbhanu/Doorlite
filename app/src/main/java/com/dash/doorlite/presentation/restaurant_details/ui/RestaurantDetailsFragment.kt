@@ -106,7 +106,6 @@ class RestaurantDetailsFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
                 is RestaurantsDetailsFragmentState.RestaurantDetails -> {
-                    println("got tags ${it.details.tags}")
                     binding.details = it.details
                 }
 
