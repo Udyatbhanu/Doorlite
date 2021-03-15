@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <data>
@@ -102,7 +101,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
-                    android:text="4.6 400 ratings"
+                    android:layout_marginBottom="@dimen/margin_large"
+                    android:text="@{details.tags}"
                     android:textSize="@dimen/text_size_subtitle" />
                 <!--rating layout-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -117,9 +117,9 @@
                         android:layout_marginStart="@dimen/margin_large"
                         android:text="@{@string/avg_ratings_format(details.averageRating)}"
                         android:textSize="@dimen/text_size_subtitle"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/numberOfRatings"
@@ -127,13 +127,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_large"
                         android:text="@{@string/num_ratings_format(details.numberOfRatings)}"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="@dimen/text_size_subtitle"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toRightOf="@+id/averageRating"
 
 
-
-                        android:textSize="@dimen/text_size_subtitle" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

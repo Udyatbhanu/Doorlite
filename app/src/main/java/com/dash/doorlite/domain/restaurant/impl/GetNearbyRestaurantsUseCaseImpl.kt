@@ -36,7 +36,6 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
 
     private suspend fun requestData(location: Location) {
         isRequestInProgress = true
-        var successful = false
         try {
             when (val response = restaurantsRepository.getNearbyRestaurants(
                     location.latitude,
@@ -45,7 +44,7 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
                     PAGE_SIZE.toString(),
             )) {
                 is ResultWrapper.Success -> {
-
+                    //ref: com.dash.doorlite.data.model.RestaurantsResponse
                     nextOffSet = response.value.nextOffset
                     val stores = response.value.stores.map {
                         Restaurant(
@@ -55,7 +54,8 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
                                 it.coverImgUrl,
                                 it.headerImgUrl,
                                 it.numRatings,
-                                it.distanceFromConsumer
+                                it.distanceFromConsumer,
+                                it.displayDeliveryFee
                         )
                     }
                     _cache.addAll(stores)

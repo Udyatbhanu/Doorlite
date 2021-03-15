@@ -12,5 +12,6 @@ data class Restaurant(
         val headerImage: String,
         val numRatings: Int,
         val distance: Double,
+        val displayDeliveryFee : String
 
 ) : Parcelable

@@ -105,7 +105,10 @@ class RestaurantDetailsFragment : Fragment() {
     private fun subscribe() {
         viewModel.state.observe(viewLifecycleOwner) {
             when (it) {
-                is RestaurantsDetailsFragmentState.RestaurantDetails -> binding.details = it.details
+                is RestaurantsDetailsFragmentState.RestaurantDetails -> {
+                    println("got tags ${it.details.tags}")
+                    binding.details = it.details
+                }
 
             }
         }

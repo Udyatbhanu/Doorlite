@@ -20,6 +20,19 @@ class GetRestaurantDetailsUseCaseImpl @Inject constructor(private val restaurant
         return restaurant
     }
 
+
+    /**
+     * Build the tags
+     */
+    private fun buildTags(tagsList: List<String>): String {
+        var tags = ""
+        tagsList.map { tag ->
+            tags = tags.plus(tag).plus(" | ")
+
+        }
+        return tags.substring(0, tags.length - 2) // remove last 2 including the space
+    }
+
     private suspend fun getDetails(id: String) {
         try {
 
@@ -32,7 +45,7 @@ class GetRestaurantDetailsUseCaseImpl @Inject constructor(private val restaurant
                             response.value.asapTime.toString(),
                             response.value.averageRating.toString(),
                             response.value.numberOfRatings.toString(),
-                            response.value.tags)
+                            buildTags(response.value.tags.take(4)))
                     restaurant.emit(RestaurantDetails.Success(details))
                 }
 

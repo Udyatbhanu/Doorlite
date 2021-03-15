@@ -14,6 +14,7 @@
 
 
     <!--Restaurant details-->
+    <dimen name="text_size_tags">15sp</dimen>
     <dimen name="text_size_subtitle">10sp</dimen>
     <dimen name="padding_yet_extra_large">25dp</dimen>
 
