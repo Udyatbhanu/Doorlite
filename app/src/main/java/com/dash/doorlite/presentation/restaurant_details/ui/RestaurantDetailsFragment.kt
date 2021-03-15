@@ -13,6 +13,7 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.dash.doorlite.R
@@ -22,9 +23,11 @@ import com.dash.doorlite.databinding.FragmentRestaurantDetailsBinding
 import com.dash.doorlite.domain.restaurant.model.Restaurant
 import com.dash.doorlite.domain.restaurant.model.Restaurants
 import com.dash.doorlite.domain.restaurant_details.model.Details
+import com.dash.doorlite.presentation.restaurant.ui.RestaurantsAdapter
 import com.dash.doorlite.presentation.restaurant.ui.RestaurantsFragmentIntent
 import com.dash.doorlite.presentation.restaurant.ui.RestaurantsFragmentState
 import com.dash.doorlite.presentation.restaurant_details.viewmodel.RestaurantDetailsViewModel
+import com.dash.doorlite.presentation.scrollToTop
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -48,6 +51,7 @@ sealed class RestaurantsDetailsFragmentIntent : IIntent {
 class RestaurantDetailsFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantDetailsBinding
     private val viewModel by viewModels<RestaurantDetailsViewModel>()
+    private var popularItemsAdapter: PopularItemsAdapter = PopularItemsAdapter()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -80,11 +84,14 @@ class RestaurantDetailsFragment : Fragment() {
         }
 
 
+        //pull out the data already available
         val restaurant = arguments?.get("restaurant") as Restaurant
-
-
-        println("Popular items ${restaurant.popularItems}")
+        binding.popularItems.adapter = popularItemsAdapter
+        scrollToTop(binding.popularItems)
+        popularItemsAdapter.submitList(restaurant.popularItems)
         binding.restaurant = restaurant as Restaurant?
+
+        // Set the header image
         Glide.with(binding.root.context)
                 .asBitmap()
                 .load(restaurant.headerImage)
@@ -95,7 +102,19 @@ class RestaurantDetailsFragment : Fragment() {
 
                 .into(binding.image)
 
+        //cover image
+        Glide.with(binding.root.context)
+                .asBitmap()
+                .load(restaurant.coverImage)
+                .apply(RequestOptions().transform(CenterInside(), RoundedCorners(100))
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.placeholder))
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
 
+                .into(binding.headerImage)
+
+
+        //Get the details
         lifecycleScope.launch {
             viewModel.intents.send(RestaurantsDetailsFragmentIntent.GetRestaurantDetails(restaurant.id))
         }

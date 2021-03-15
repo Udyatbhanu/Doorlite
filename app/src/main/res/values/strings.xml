@@ -21,9 +21,11 @@
 
 
     <!-- product details   -->
-
-
+    <string name="price_format">\u0024%1$s</string>
+    <string name="popular_items">Popular Items</string>
     <string name="avg_ratings_format">%1$s \u2605</string>
     <string name="num_ratings_format">%1$s ratings</string>
+    <string name="delivery_fee">delivery fee</string>
+    <string name="delivery_time">delivery time</string>
     <string name="delivery_time_format">%1$s minutes</string>
 </resources>

@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import retrofit2.HttpException
 import java.io.IOException
-import java.text.DecimalFormat
 import javax.inject.Inject
 
 
@@ -41,10 +40,9 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
      * Map the popular items
      */
     private fun getPopularItems(items: List<PopularItem>): List<Item> {
-
-        val dec = DecimalFormat("#.##")
         return items.map { item ->
-            Item(item.id.toString(), item.name, item.description, item.imgUrl, String.format(java.util.Locale.US, "%.002f", item.price.toDouble() / 100))
+            Item(item.id.toString(), item.name, item.description, item.imgUrl,
+                    String.format(java.util.Locale.US, "%.002f", item.price.toDouble() / 100))
         }
 
     }

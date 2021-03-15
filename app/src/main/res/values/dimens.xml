@@ -6,6 +6,7 @@
     <dimen name="store_title_size">20sp</dimen>
     <dimen name="store_desc_size">10sp</dimen>
 
+    <dimen name="margin_medium">8dp</dimen>
     <dimen name="margin_large">12dp</dimen>
     <dimen name="margin_yet_extra_large">25dp</dimen>
 
@@ -17,8 +18,9 @@
     <dimen name="text_size_tags">15sp</dimen>
     <dimen name="text_size_subtitle">10sp</dimen>
     <dimen name="padding_yet_extra_large">25dp</dimen>
-
+    <dimen name="header_image_size">100dp</dimen>
     <dimen name="space_16">16dp</dimen>
+    <dimen name="popular_item_image_size">80dp</dimen>
 
 
     <!--Splash Screen-->
