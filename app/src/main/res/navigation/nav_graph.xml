@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.dash.doorlite.presentation.splash.ui.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_restaurantsFragment"
+            app:destination="@id/restaurantsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantsFragment"
+        android:name="com.dash.doorlite.presentation.restaurant.ui.RestaurantsFragment"
+        android:label="RestaurantsFragment" >
+        <action
+            android:id="@+id/action_restaurantsFragment_to_restaurantDetailsFragment"
+            app:destination="@id/restaurantDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/restaurantDetailsFragment"
+        android:name="com.dash.doorlite.presentation.restaurant_details.ui.RestaurantDetailsFragment"
+        android:label="RestaurantDetailsFragment" />
+
+</navigation>

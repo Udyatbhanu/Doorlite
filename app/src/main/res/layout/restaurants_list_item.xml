@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="restaurant"
+            type="com.dash.doorlite.domain.restaurant.model.Restaurant" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/productCardLayout"
+        style="@style/CardStyle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/restaurantLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/store_list_item_size"
+            android:background="@color/white"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:paddingStart="@dimen/padding_extra_large"
+            android:paddingTop="@dimen/padding_extra_large"
+            android:paddingEnd="@dimen/padding_extra_large"
+            android:paddingBottom="@dimen/padding_extra_large">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/coverImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/store_header_image_size"
+                android:layout_marginEnd="@dimen/margin_large"
+                app:layout_constraintBottom_toTopOf="@id/name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.041"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@{restaurant.title}"
+                android:textSize="@dimen/store_title_size"
+                app:layout_constraintBottom_toTopOf="@id/description"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/coverImage" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@{restaurant.description}"
+                android:textSize="@dimen/store_desc_size"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/min"
+                />
+
+            <TextView
+                android:id="@+id/min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23 min"
+                android:textSize="@dimen/store_desc_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
+
+
+            <TextView
+                android:id="@+id/distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/store_desc_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/min" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</layout>

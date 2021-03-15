@@ -1,0 +1,97 @@
+package com.dash.doorlite.data.model.restaurant_details
+
+
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
+data class RestaurantDetailsResponse(
+    @Json(name = "address")
+    var address: Address? = Address(),
+    @Json(name = "asap_time")
+    var asapTime: Int? = 0,
+    @Json(name = "average_rating")
+    var averageRating: Double?= 0.0,
+    @Json(name = "business")
+    var business: Business? = Business(),
+    @Json(name = "business_id")
+    var businessId: Int? = 0,
+    @Json(name = "composite_score")
+    var compositeScore: Int? = 0,
+    @Json(name = "cover_img_url")
+    var coverImgUrl: String? = "",
+    @Json(name = "delivery_fee")
+    var deliveryFee: Int? = 0,
+    @Json(name = "delivery_fee_details")
+    var deliveryFeeDetails: DeliveryFeeDetails? = DeliveryFeeDetails(),
+    @Json(name = "delivery_radius")
+    var deliveryRadius: Int? = 0,
+    @Json(name = "description")
+    var description: String? = "",
+    @Json(name = "extra_sos_delivery_fee")
+    var extraSosDeliveryFee: Int? = 0,
+    @Json(name = "fulfills_own_deliveries")
+    var fulfillsOwnDeliveries: Boolean? = false,
+    @Json(name = "header_image_url")
+    var headerImageUrl: Any? = null,
+    @Json(name = "id")
+    var id: Int = 0,
+    @Json(name = "inflation_rate")
+    var inflationRate: Double? = 0.0,
+    @Json(name = "is_consumer_subscription_eligible")
+    var isConsumerSubscriptionEligible: Boolean?= false,
+    @Json(name = "is_good_for_group_orders")
+    var isGoodForGroupOrders: Boolean? = false,
+    @Json(name = "is_newly_added")
+    var isNewlyAdded: Boolean? = false,
+    @Json(name = "is_only_catering")
+    var isOnlyCatering: Boolean? = false,
+    @Json(name = "max_composite_score")
+    var maxCompositeScore: Int? = 0,
+    @Json(name = "max_order_size")
+    var maxOrderSize: Any? = null,
+    @Json(name = "menus")
+    var menus: List<Menu>? = listOf(),
+    @Json(name = "merchant_promotions")
+    var merchantPromotions: List<MerchantPromotion>? = listOf(),
+    @Json(name = "name")
+    var name: String? = "",
+    @Json(name = "number_of_ratings")
+    var numberOfRatings: Int? = 0,
+    @Json(name = "object_type")
+    var objectType: String? = "",
+    @Json(name = "offers_delivery")
+    var offersDelivery: Boolean? = false,
+    @Json(name = "offers_pickup")
+    var offersPickup: Boolean? = false,
+    @Json(name = "phone_number")
+    var phoneNumber: String? = "",
+    @Json(name = "price_range")
+    var priceRange: Int? = 0,
+    @Json(name = "provides_external_courier_tracking")
+    var providesExternalCourierTracking: Boolean? = false,
+    @Json(name = "service_rate")
+    var serviceRate: Double? = 0.0,
+    @Json(name = "should_show_store_logo")
+    var shouldShowStoreLogo: Boolean? = false,
+    @Json(name = "show_store_menu_header_photo")
+    var showStoreMenuHeaderPhoto: Boolean? = false,
+    @Json(name = "show_suggested_items")
+    var showSuggestedItems: Boolean? = false,
+    @Json(name = "slug")
+    var slug: String? = "",
+    @Json(name = "special_instructions_max_length")
+    var specialInstructionsMaxLength: Int? = 0,
+    @Json(name = "status")
+    var status: String? = "",
+    @Json(name = "status_type")
+    var statusType: String? = "",
+    @Json(name = "tags")
+    var tags: List<String>? = listOf(),
+    @Json(name = "yelp_biz_id")
+    var yelpBizId: String? = "",
+    @Json(name = "yelp_rating")
+    var yelpRating: Double? = 0.0,
+    @Json(name = "yelp_review_count")
+    var yelpReviewCount: Int? = 0
+)

@@ -1,0 +1,25 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="store_list_item_size">325dp</dimen>
+    <dimen name="store_header_image_size">200dp</dimen>
+    <dimen name="store_title_size">20sp</dimen>
+    <dimen name="store_desc_size">10sp</dimen>
+
+    <dimen name="margin_large">12dp</dimen>
+    <dimen name="margin_yet_extra_large">25dp</dimen>
+
+
+    <dimen name="padding_extra_large">16dp</dimen>
+
+
+    <!--Restaurant details-->
+    <dimen name="text_size_subtitle">10sp</dimen>
+    <dimen name="padding_yet_extra_large">25dp</dimen>
+
+    <dimen name="space_16">16dp</dimen>
+
+
+    <!--Splash Screen-->
+    <dimen name="text_size_splash">20sp</dimen>
+</resources>

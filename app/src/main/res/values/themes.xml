@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Doorlite" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+
+<!--        <item name="android:windowLightStatusBar" tools:targetApi="23">@bool/use_light_system_bars</item>-->
+<!--        <item name="android:windowLightNavigationBar" tools:targetApi="27">@bool/use_light_system_bars</item>-->
+
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+<!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="Theme.Doorlite.TransparentTheme"  parent="Theme.Doorlite">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
+
+
+    </style>
+
+    <style name="Widget.AppTheme.AppBar" parent="ThemeOverlay.MaterialComponents.Dark" />
+
+    <style name="CollapsingToolbarLayoutExpandedTextStyle" parent="Theme.Doorlite">
+        <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textSize">0sp</item>
+    </style>
+
+    <style name="Theme.Doorlite.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Doorlite.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Doorlite.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

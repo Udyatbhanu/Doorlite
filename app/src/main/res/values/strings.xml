@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Doorlite</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+
+
+    <string name="splash_loading">Loading…</string>
+    <string name="distance_from_consumer_format">%1$s miles</string>
+
+    <string name="permission_rationale">
+        Location permission is needed for core functionality
+    </string>
+    <string name="no_location_detected">
+        No location detected. Make sure location is enabled on the device.
+    </string>
+    <string name="permission_denied_explanation">
+        Permission was denied, but is needed for core functionality.
+    </string>
+    <string name="settings">Settings</string>
+
+
+
+    <!-- product details   -->
+
+
+    <string name="avg_ratings_format">%1$s \u2605</string>
+    <string name="num_ratings_format">%1$s ratings</string>
+    <string name="delivery_time_format">%1$s minutes</string>
+</resources>
