@@ -2,14 +2,17 @@ package com.dash.doorlite.domain.restaurant.impl
 
 import com.dash.doorlite.core.presentation.viewmodel.Location
 import com.dash.doorlite.core.service.ResultWrapper
+import com.dash.doorlite.data.model.PopularItem
 import com.dash.doorlite.data.repository.RestaurantsRepository
 import com.dash.doorlite.domain.restaurant.GetNearbyRestaurantsUseCase
+import com.dash.doorlite.domain.restaurant.model.Item
 import com.dash.doorlite.domain.restaurant.model.Restaurant
 import com.dash.doorlite.domain.restaurant.model.Restaurants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import retrofit2.HttpException
 import java.io.IOException
+import java.text.DecimalFormat
 import javax.inject.Inject
 
 
@@ -34,6 +37,18 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
     }
 
 
+    /**
+     * Map the popular items
+     */
+    private fun getPopularItems(items: List<PopularItem>): List<Item> {
+
+        val dec = DecimalFormat("#.##")
+        return items.map { item ->
+            Item(item.id.toString(), item.name, item.description, item.imgUrl, String.format(java.util.Locale.US, "%.002f", item.price.toDouble() / 100))
+        }
+
+    }
+
     private suspend fun requestData(location: Location) {
         isRequestInProgress = true
         try {
@@ -55,7 +70,8 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
                                 it.headerImgUrl,
                                 it.numRatings,
                                 it.distanceFromConsumer,
-                                it.displayDeliveryFee
+                                it.displayDeliveryFee,
+                                if (it.menus.isNotEmpty()) getPopularItems(it.menus[0].popularItems) else emptyList() // ambiguity here, but this demo will do
                         )
                     }
                     _cache.addAll(stores)

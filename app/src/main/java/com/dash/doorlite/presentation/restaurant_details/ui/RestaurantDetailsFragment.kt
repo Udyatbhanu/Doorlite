@@ -81,8 +81,9 @@ class RestaurantDetailsFragment : Fragment() {
 
 
         val restaurant = arguments?.get("restaurant") as Restaurant
-                ?: ""
 
+
+        println("Popular items ${restaurant.popularItems}")
         binding.restaurant = restaurant as Restaurant?
         Glide.with(binding.root.context)
                 .asBitmap()
