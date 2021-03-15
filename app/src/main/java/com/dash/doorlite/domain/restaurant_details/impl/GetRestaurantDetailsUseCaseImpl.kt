@@ -16,7 +16,6 @@ class GetRestaurantDetailsUseCaseImpl @Inject constructor(private val restaurant
 
     private val restaurant = MutableSharedFlow<RestaurantDetails>(replay = 1)
     override suspend fun getRestaurantDetails(id: String): Flow<RestaurantDetails> {
-        println("Got id in vm $id")
         getDetails(id)
         return restaurant
     }
@@ -24,9 +23,7 @@ class GetRestaurantDetailsUseCaseImpl @Inject constructor(private val restaurant
     private suspend fun getDetails(id: String) {
         try {
 
-            val response = restaurantsRepository.getRestaurantDetails(id)
-            println("Got response $response")
-            when (response) {
+            when (val response = restaurantsRepository.getRestaurantDetails(id)) {
 
                 is ResultWrapper.Success -> {
                     //ref: com.dash.doorlite.data.model.restaurant_details.RestaurantDetailsResponse
@@ -34,7 +31,8 @@ class GetRestaurantDetailsUseCaseImpl @Inject constructor(private val restaurant
                             if (response.value.deliveryFee == 0) "Free Delivery" else response.value.deliveryFee.toString(),
                             response.value.asapTime.toString(),
                             response.value.averageRating.toString(),
-                            response.value.numberOfRatings.toString())
+                            response.value.numberOfRatings.toString(),
+                            response.value.tags)
                     restaurant.emit(RestaurantDetails.Success(details))
                 }
 

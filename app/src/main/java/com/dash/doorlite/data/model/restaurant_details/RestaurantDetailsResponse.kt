@@ -87,7 +87,7 @@ data class RestaurantDetailsResponse(
     @Json(name = "status_type")
     var statusType: String? = "",
     @Json(name = "tags")
-    var tags: List<String>? = listOf(),
+    var tags: List<String> = listOf(),
     @Json(name = "yelp_biz_id")
     var yelpBizId: String? = "",
     @Json(name = "yelp_rating")

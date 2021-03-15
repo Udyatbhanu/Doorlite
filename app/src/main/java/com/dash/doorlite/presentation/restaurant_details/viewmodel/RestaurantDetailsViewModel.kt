@@ -34,7 +34,6 @@ class RestaurantDetailsViewModel @Inject constructor(private val getRestaurantDe
     }
 
     private fun handlerIntent() {
-        // Lambda function to launchViewModelScope on a single thread dispatcher
         viewModelScope.launch {
             intents.consumeAsFlow().collect {
                 when (it) {
@@ -60,24 +59,8 @@ class RestaurantDetailsViewModel @Inject constructor(private val getRestaurantDe
                 is RestaurantDetails.Error -> _state.value = RestaurantsDetailsFragmentState.Error
             }
         }
-//        viewModelScope.launch {
-//            getRestaurantDetailsUseCase.getRestaurantDetails(id).collect {
-//                when (it) {
-//                    is RestaurantDetails.Success -> _state.value = RestaurantsDetailsFragmentState.RestaurantDetails(it.data)
-//                    is RestaurantDetails.Error -> _state.value = RestaurantsDetailsFragmentState.Error
-//                }
-//            }
-//        }
-    }
-
-    private suspend fun postUpdate(state: RestaurantsDetailsFragmentState) {
-        withContext(SINGLE_THREAD) {
-            _state.value = state
-        }
 
     }
 
-    companion object {
-        private val SINGLE_THREAD = newSingleThreadContext("restaurantDetails")
-    }
+
 }

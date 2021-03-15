@@ -1,6 +1,5 @@
 package com.dash.doorlite.domain.restaurant.impl
 
-import com.dash.doorlite.core.AppManager
 import com.dash.doorlite.core.presentation.viewmodel.Location
 import com.dash.doorlite.core.service.ResultWrapper
 import com.dash.doorlite.data.repository.RestaurantsRepository
@@ -9,10 +8,8 @@ import com.dash.doorlite.domain.restaurant.model.Restaurant
 import com.dash.doorlite.domain.restaurant.model.Restaurants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.collect
 import retrofit2.HttpException
 import java.io.IOException
-import java.lang.Appendable
 import javax.inject.Inject
 
 
@@ -38,8 +35,6 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
 
 
     private suspend fun requestData(location: Location) {
-
-        println("Got location $location")
         isRequestInProgress = true
         var successful = false
         try {
@@ -66,7 +61,6 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
                     _cache.addAll(stores)
                     _cache.sortWith { x, y -> x.distance.toInt().compareTo(y.distance.toInt()) }
 
-                    println("_cache size ${_cache.size}")
                     restaurants.emit(Restaurants.Success(_cache))
                     isSecondLast = response.value.nextOffset == 0
 
