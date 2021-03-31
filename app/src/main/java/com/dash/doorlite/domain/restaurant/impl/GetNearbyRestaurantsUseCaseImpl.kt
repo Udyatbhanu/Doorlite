@@ -69,7 +69,8 @@ class GetNearbyRestaurantsUseCaseImpl @Inject constructor(private val restaurant
                                 it.numRatings,
                                 it.distanceFromConsumer,
                                 it.displayDeliveryFee,
-                                if (it.menus.isNotEmpty()) getPopularItems(it.menus[0].popularItems) else emptyList() // ambiguity here, but this demo will do
+                                if (it.menus.isNotEmpty()) getPopularItems(it.menus[0].popularItems) else emptyList(),
+                                false// ambiguity here, but this demo will do
                         )
                     }
                     _cache.addAll(stores)

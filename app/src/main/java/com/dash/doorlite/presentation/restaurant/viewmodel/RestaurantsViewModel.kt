@@ -5,6 +5,7 @@ import com.dash.doorlite.core.AppManager
 import com.dash.doorlite.core.IModel
 import com.dash.doorlite.core.presentation.viewmodel.Location
 import com.dash.doorlite.domain.restaurant.GetNearbyRestaurantsUseCase
+import com.dash.doorlite.domain.restaurant.model.Restaurant
 import com.dash.doorlite.domain.restaurant.model.Restaurants
 import com.dash.doorlite.presentation.restaurant.ui.RestaurantsFragmentIntent
 import com.dash.doorlite.presentation.restaurant.ui.RestaurantsFragmentState
@@ -51,6 +52,11 @@ class RestaurantsViewModel @Inject constructor(private val getNearbyRestaurantsU
         }
     }
 
+
+    fun selectFav(restaurant : Restaurant){
+        //save restaurant
+        restaurant
+    }
 
     fun getEateries(location: Location) {
         locationLiveData.postValue(location)

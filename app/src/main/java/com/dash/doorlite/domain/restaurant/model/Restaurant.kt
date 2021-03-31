@@ -24,6 +24,7 @@ data class Restaurant(
         val numRatings: Int,
         val distance: Double,
         val displayDeliveryFee: String,
-        val popularItems: List<Item>
+        val popularItems: List<Item>,
+        val isFav : Boolean
 
 ) : Parcelable

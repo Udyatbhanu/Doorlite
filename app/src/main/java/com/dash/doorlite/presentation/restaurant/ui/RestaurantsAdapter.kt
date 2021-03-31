@@ -1,5 +1,6 @@
 package com.dash.doorlite.presentation.restaurant.ui
 
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -9,7 +10,7 @@ import com.dash.doorlite.R
 import com.dash.doorlite.databinding.RestaurantsListItemBinding
 import com.dash.doorlite.domain.restaurant.model.Restaurant
 
-class RestaurantsAdapter :
+class RestaurantsAdapter(private val  pref: SharedPreferences?, private val listener: (Restaurant) -> Unit) :
     ListAdapter<Restaurant, RestaurantsViewHolder>(COMPARATOR) {
 
 
@@ -26,7 +27,7 @@ class RestaurantsAdapter :
     override fun onBindViewHolder(holder: RestaurantsViewHolder, position: Int) {
         val restaurant = getItem(position)
         if(restaurant != null){
-            holder.bind(restaurant)
+            holder.bind(restaurant, listener,pref)
         }
 
     }

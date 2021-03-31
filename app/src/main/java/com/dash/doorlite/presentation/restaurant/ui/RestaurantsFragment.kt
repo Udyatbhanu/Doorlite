@@ -1,10 +1,12 @@
 package com.dash.doorlite.presentation.restaurant.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.NonNull
 import androidx.databinding.DataBindingUtil
@@ -52,7 +54,9 @@ sealed class RestaurantsFragmentIntent : IIntent {
 class RestaurantsFragment : Fragment() {
     private lateinit var binding: FragmentRestaurantsBinding
     private val viewModel by viewModels<RestaurantsViewModel>()
-    private var restaurantsAdapter: RestaurantsAdapter = RestaurantsAdapter()
+    private  lateinit var restaurantsAdapter: RestaurantsAdapter
+
+
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -85,16 +89,38 @@ class RestaurantsFragment : Fragment() {
      * the method initializes any UI component or makes init API calls
      */
     private fun initialize() {
-
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         val location = arguments?.get("location")  as Location
         viewModel.getEateries(location)
         setupScrollListener()
         scrollToTop(binding.restaurantsList)
-        binding.restaurantsList.adapter = restaurantsAdapter
 
         binding.fab.setOnClickListener {
             scrollToTop(binding.restaurantsList)
         }
+
+
+        restaurantsAdapter  = RestaurantsAdapter (sharedPref) {
+
+            if(sharedPref.getString(it.id, "").equals("")){
+                // store in pref
+                with (sharedPref?.edit()) {
+                    this?.putString(it.id, it.id)
+                    this?.apply()
+                }
+            }else{
+                //remove
+                with (sharedPref?.edit()) {
+                    this?.remove(it.id)
+                    this?.apply()
+                }
+            }
+
+
+        }
+        binding.restaurantsList.adapter = restaurantsAdapter
+
+
     }
 
 
